@@ -1,1 +1,1 @@
-//kkkkkk
+int file1_h_var = 599;
