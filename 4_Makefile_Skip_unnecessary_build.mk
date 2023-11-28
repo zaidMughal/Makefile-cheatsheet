@@ -1,17 +1,15 @@
+# Skipping Unnecessary Build:
 
+# In a rule of makefile, the right hand side of colon is the name of that rule,
+# often representing the target file that the rule produces, but not always.
 
-# In a rule of makefile, the right hand side of colon is the name of that rule.
-# Often it is the name of the target file that the rule produces, and often it is not.
-
-# The left hand side of the colon lists the dependencies of that rule.
-# These dependencies may be the files or other rules. 
-
+#The left-hand side lists the dependencies of that rule, which may be files or other rules.
 # When a dependency is another rule, make proceeds to run that dependency 
 # before executing the dependent rule. This dependency rule is executed 
-# in every scenario. Example: "2_Makefile_Two_step.mk"
+# in every scenario. Example: "Makefile_Two_step.mk"
 
-# However, if the dependencies are files, and the rule name is also the name of 
-# the target file the rule generates, then the rule may or may not need to be executed.
+# However, if the dependencies are files, and the rule name is the target file's 
+# name that the rule generates, then the rule may or may not need execution.
 # When make encounters such a rule, it compares the 
 # last modified timestamps of the latest generated target file and 
 # its dependencies. If any of the dependencies were modified after the 
@@ -26,14 +24,14 @@
 # gcc -c -o file1.o file1.c
 # gcc -o myprog file2.o file1.o
 
-# And if you run make again, instead of above three commands, only following will run:
+# And if you run make again, instead of above three commands, only the following command runs:
 # gcc -o myprog file2.o file1.o
 
 # The reason is that the rule 'all' is dependent on file2.o and file1.o.
 # Make first check rule for file2.o and sees that it is dependent on file2.c.
 # Since the rule name is a file, and the dependency is a file, make proceeds to compare
-# timestamps of the target and dependency. And since timestamt of target comes out to be later than it s dependency,
-# make deduces that it does not need to run rule for file2.o again.
+# timestamps of the target and dependency. And since timestamp of target comes out to be later 
+# than it s dependency, make decides that it does not need to run the rule for file2.o again.
 # Same thing happens with file1.o. And then the recipie of rule 'all' is ran, which 
 # results in above command execution.
 
@@ -44,7 +42,7 @@
 # to be run again. This can be patched by naming 'all' to 'myprog'.
 # Now if you run make again, it won't compile anything unless any dependency file is changed.
 
-CFLAGS = -Wall
+CFLAGS := -Wall
 
 all:file2.o file1.o
 	gcc $(CFLAGS) -o myprog file2.o file1.o

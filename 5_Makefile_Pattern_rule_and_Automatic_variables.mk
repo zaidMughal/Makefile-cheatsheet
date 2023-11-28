@@ -1,18 +1,17 @@
-# Consider the last makefile: 
+# Pattern Rule & Automatic Variables:
 
+# Consider the last makefile: 
 # myprog:file2.o file1.o
 # 	gcc -o myprog file2.o file1.o
-
 # file2.o:file2.c
 # 	gcc -c -o file2.o file2.c
-
 # file1.o:file1.c
 # 	gcc -c -o file1.o file1.c
 
 # It is efficient and doesn't rebuild the target unless necessary.
-# But writing it is not efficient. If there are 100 files, would we 
+# But writing it is not efficient and scalable. If there are 100 files, would we 
 # write 100 rules for object files. And if the directory structure changes, 
-# then changing path of every file in the makefile would be tedious task and 
+# then changing the path of every file in the makefile would be tedious task and 
 # would be prone to errors.
 
 
@@ -44,9 +43,10 @@
 
 # '$@' : The file name of the target of the rule. 
 # '$<' : The name of the first prerequisite. 
+# '$^' : The names of all the prerequisites, with spaces between them.
 # Complete list of Automatic variables: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
 
-CFLAGS = -Wall
+CFLAGS := -Wall
 
 myprog:file2.o file1.o
 	gcc $(CFLAGS) -o myprog file2.o file1.o
