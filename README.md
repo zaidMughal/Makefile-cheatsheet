@@ -1,4 +1,4 @@
-# Compiler-and-makefile-cheatsheet
+# Makefile-cheatsheet
 
 This repo serves as a basic tutorial on makefiles. Beginning with a straightforward makefile and gradually introducing more advanced features, I've crafted it as a crash course on the subject. 
 
