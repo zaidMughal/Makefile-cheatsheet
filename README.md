@@ -11,3 +11,6 @@ Example 2 : "make -f 7_Makefile_Conditional_and_Built-in_functions.mk myprog DEB
 -f      : option to pass the Makefile filename
 myprog  : target name
 DEBUG   : variable passed to makefile by the user
+
+
+Official documentation of GNUmake: https://www.gnu.org/software/make/manual/html_node/index.html
