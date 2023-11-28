@@ -4,14 +4,19 @@
 #	-c                      Compile and assemble, but do not link.
 #	-o <file>               Place the output into <file>.
 #	-Wall                   Display all warnings
-#   -B <directory>          Add directory to compiler's search paths
+#	-B <directory>          Specifies where to find the executables, libraries, include files, 
+#	                        and data files of the compiler itself.
+#	-I <path>               These options specify directories to search for header files, 
+#	                        for libraries and for parts of the compiler
+
+# For more information, visit https://gcc.gnu.org/onlinedocs/gcc/Directory-Options.html
 
 info:
 	@echo "Command syntax of make:"
-	@echo "make <rule_name> -f <filename>"
+	@echo "make [options] [target]"
 	@echo "or"
-	@echo "make DEBUG=1 <rule_name> -f <filename>"
-	@echo "Example: \"make DEBUG=1 myprog -f 7_Makefile_Conditional_and_Built-in_functions.mk\""
+	@echo "make -f [filename] [target] DEBUG=1 "
+	@echo "Example: \"make -f 7_Makefile_Conditional_and_Built-in_functions.mk myprog DEBUG=1\""
 all:
 	gcc -o myprog file2.c file1.c
 
